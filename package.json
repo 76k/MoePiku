@@ -1,0 +1,15 @@
+{
+  "name": "moepiku",
+  "version": "0.1.2",
+  "description": "一个基于github-issues的blog",
+  "main": "test.js",
+  "scripts": {
+    "dev": "browser-sync --server --files '..' src"
+  },
+  "keywords": [
+    "github-issues",
+    "blog"
+  ],
+  "author": "kozo4",
+  "license": "MIT"
+}

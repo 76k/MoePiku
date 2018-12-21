@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>404</title>
+    <link rel="icon" href="http://github.com/favicon.ico">
+    <style type="text/css">
+      .con{
+        width: 40%;
+        height: 80%;
+        position: absolute;
+        top:0;
+        left:0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        text-align: center;
+      }
+      .emoji{
+        position: relative;
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 2px solid #0e0d0d;
+        transition: all .1s;
+      }
+      .emoji em{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .emoji:hover{
+        border: 2px solid #333;
+        background: #333;
+        box-shadow: 5px 8px 20px #333;
+      }
+      .emoji i{
+        position: absolute;
+        top: 70%;
+        right: 45%;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+
+        background: #333;
+        transition: all .3s;
+      }
+      .emoji i:first-child{
+        top: 70px;
+        left: 50px;
+      }
+      .emoji i:last-child{
+        top: 70px;
+        right: 50px;
+      }
+      .emoji:hover i:first-child,
+      .emoji:hover i:last-child{
+        background: #fff;
+        top: 80px;
+        box-shadow: 2px 10px 34px #333;
+      }
+      .emoji:hover i.i{
+        top: 75%;
+        right: 45%;
+        background: #fff;
+        box-shadow: 3px 5px 15px #333;
+      }
+      .tip{
+        margin: 20px 0;
+      }
+      .tip h2{
+        display: inline-block;
+        color: rgb(122, 122, 122);
+        font-size: 14px;
+        font-weight: normal;
+        cursor: pointer;
+      }
+      .tip h2 a{
+        position: relative;
+        color: #333;
+        text-decoration: none;
+      }
+      .tip h2 a:after{
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        width: 1%;
+        height: 1px;
+        background: #333;
+        transition: all .5s;
+      }
+      .tip h2:hover a:after{
+        width: 100%;
+        background: #000;
+      }
+      .tip a:hover{
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <div class="emoji">
+        <i></i>
+        <i class="i"></i>
+        <i></i>
+      </div>
+      <div class="tip">
+        <h2>这里没有你要找的东西哦。戳这里回到<a href="index.html">首页</a></h2>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!-- 20180921 20180922 20180923-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Kozo4</title>
+  <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+  <link href="http://cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+  <link rel="stylesheet" href="typo.css">
+  <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/github-markdown-css/2.10.0/github-markdown.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/default.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div id="bg"></div>
+  <div id="aplayer"></div>
+  <div id="back">
+    <a href="javascript:">
+      <svg width="20" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1683 1331l-166 165q-19 19-45 19t-45-19l-531-531-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z"/></svg>
+    </a>
+  </div>
+  <div id="header" class="wrap"></div>
+  <div id="container" class="wrap"></div>
+  <div id="footer"></div>
+
+  <script type="text/ractive" id="hd">
+    <div class="cover" style="background-image: url({{cover}});">
+      <div class="diy">
+        <p id="hitokoto">{{show}}</p>
+        <span id="busuanzi_container_site_pv">
+          你是第<span id="busuanzi_value_site_pv"></span>位访客
+        </span>
+      </div>
+    </div>
+    <ul class="clearfix">
+      <li class="fl"><img src="{{avatar}}" class="avatar"><strong>{{name}}</strong></li>
+      <li class="fr"><a href="#about" onclick="window.location.reload()">/About</a></li>
+      <li class="fr"><a href="#test" onclick="window.location.reload()">/Photo</a></li>
+      <li class="fr"><a href="#">/Post</a></li>
+    </ul>
+  </script>
+
+  <script type="text/ractive" id="listTpl">
+    <ul class="postlist">
+      {{#posts}}
+      <li class="postlist">
+        <a href="#post/{{number}}" class="hover">{{title}}</a>
+        <span class="datetime">
+            <!-- <img src="{{user.avatar_url}}&s=32" class="avatar"> -->
+            <a href="{{user.html_url}}">{{user.login}}</a>.
+            {{formatTime(created_at)}}
+        </span>
+      </li>
+      {{/posts}}
+    </ul>
+    <div class="clearfix" style="margin: 15px;text-align: center;">
+      {{#prev}}<a href="#p{{page-1}}" class="prev">上一页</a>{{/prev}}
+      {{#next}}<a href="#p{{page+1}}" class="next">下一页</a>{{/next}}
+    </div>
+  </script>
+
+  <script type="text/ractive" id="detailTpl">
+    {{#post}}
+    <h1>{{title}}</h1>
+    <span class="create_at">
+        <a href="{{user.html_url}}">
+          <img src="{{user.avatar_url}}&s=32" class="avatar">{{user.login}}
+        </a>
+        发表于 {{formatTime(created_at)}}
+    </span>
+    <div class="content markdown-body">{{{markdown2HTML(body)}}}</div>
+    <a onclick="javascript :history.back(-1);" id="close">
+      <svg width="20" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/></svg>
+    </a>
+    {{/post}}
+  </script>
+
+  <script async src="http://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/Director/1.2.8/director.min.js"></script>
+  <script src="https://cdn.bootcss.com/ractive/1.0.0-build-99/ractive.min.js"></script>
+  <script src="https://cdn.bootcss.com/marked/0.3.6/marked.js"></script>
+  <script src="http://cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+  <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+  <script src="https://files.catbox.moe/vegy6x.js"></script>
+  <script src="config.js"></script>
+  <script src="Photo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

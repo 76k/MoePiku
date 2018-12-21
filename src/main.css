@@ -1,0 +1,381 @@
+/*
+
+  by @Kozo4
+  Date: 2018-9-20;
+  自己挖的坑,死都得填了
+    _  __             _  _     _____           _     __   __
+ | |/ /___ _______ | || |   |  ___|   _  ___| | __ \ \ / /__  _   _
+ | ' // _ \_  / _ \| || |_  | |_ | | | |/ __| |/ /  \ V / _ \| | | |
+ | . \ (_) / / (_) |__   _| |  _|| |_| | (__|   <    | | (_) | |_| |
+ |_|\_\___/___\___/   |_|   |_|   \__,_|\___|_|\_\   |_|\___/ \__,_|
+
+*/
+/*滚动条 start*/
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: #F5F5F5;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: #fff;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: rgba(58, 63, 65, 0.7);
+}
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: rgb(71, 185, 241);
+}
+/* 宽高没有写死 */
+html, body {
+  width: 100%;
+  height: 100%;
+  /*background: rgba(0,0,0,.1)*/
+}
+/*a标签写死是因为 typo.css */
+a{
+  color: #1f2826;
+}
+/* 清除浮动 */
+.clearfix:before, .clearfix:after {
+  content: "";
+  height: 0;
+  display: block;
+  clear: both;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/* 图片写死 */
+img {
+  clear: both;
+  display: block;
+  margin: 10px auto;
+}
+/*--------------------*/
+.wrap{
+  width: 60%;
+  margin: 0 auto;
+}
+/*----header start----*/
+#header{
+  /*height: 400px;*/
+  /*background: #000;*/
+  margin: 100px auto 0;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #ccc;
+  overflow: hidden;
+}
+/*头部图片容器*/
+.cover{
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-size: 100%;
+}
+/*加个蒙版,不然如果添加的图片是白色的,文字就看不见了*/
+.cover:before{
+  content: "";
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+}
+/*自己的格言*/
+.diy{
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  text-shadow: 1px 1px 11px rgba(150, 150, 150, 1);
+}
+/*不算子*/
+.diy #busuanzi_container_site_pv{
+  font-size: 14px;
+}
+/*文字下面的信息*/
+#header ul.clearfix{
+  height: 50px;
+  background: #fff;
+  padding: 4px;
+}
+#header ul li{
+  display: inline-block;
+  line-height: 50px;
+}
+/*你的头像*/
+#header img{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #333;
+  vertical-align: middle;
+}
+/*右边的链接*/
+#header li.fr{
+  margin: 0 8px;
+}
+#header li.fr a{
+  display: block;
+}
+/*---container start---*/
+#container {
+  position: relative;
+  border: 1px solid rgba(172, 162, 175,.15);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  -webkit-box-shadow: -5px 4px 20px -11px rgba(71,71,71,1);
+  -moz-box-shadow: -5px 4px 20px -11px rgba(71,71,71,1);
+  box-shadow: -5px 4px 20px -11px rgba(71,71,71,1);
+  background: #fff;
+  transition: all .3s;
+}
+/*文章标题,写死了会造成下文中的排版问题,因为和typo冲突了*/
+#container h1{
+  padding-left: 10px;
+}
+/*真正的文章*/
+.content{
+  padding: 20px;
+  padding-bottom: 50px;
+}
+/*标题下面的那个bar*/
+.create_at {
+  color: #999;
+  display: block;
+  margin: 5px 0 10px;
+  padding: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #d5dddb;
+  font-size: 12px;
+}
+/*文章里的头像[img]*/
+.avatar {
+  display: inline;
+  margin: 0px 5px;
+  margin-right: 10px;
+  border-radius: 50%;
+  vertical-align: middle;
+  text-decoration: none;
+}
+/*总列表*/
+ul.postlist {
+  width: 100%;
+  margin-top: 20px;
+}
+/*文章列表*/
+.postlist {
+  padding: 10px 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+.postlist a {
+  color: #606a6e;
+  font-size: 15px;
+}
+/*列表*/
+ul.postlist li.postlist {
+  width: 100%;
+  text-align: center;
+  list-style: none;
+  margin: 0 0 30px;
+}
+/*为了权重!把文章里的ａ重写*/
+#container ul.postlist li.postlist a{
+  border: none;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 30px;
+}
+/*小线条hover效果*/
+ul.postlist li.postlist a.hover{
+  position: relative;
+  text-decoration: none;
+}
+ul.postlist li.postlist a.hover:before{
+  content: '';
+  position: absolute;
+  bottom:0;
+  left:0;
+  width: 0;
+  height: 2px;
+  background: #333;
+  transition: all .3s;
+}
+ul.postlist li.postlist a.hover:hover:before{
+  width: 100%;
+}
+/*列表文章发布时间*/
+.datetime {
+  display: block;
+  color: #999;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+.datetime a{
+  font-size: 12px!important;
+}
+/*文章内容发布*/
+#container .create_at a{
+  border: none;
+}
+/*无奈只好把文章的图片大小写死*/
+#container .content img{
+  width: 80%;
+}
+/*上一页和下一页*/
+.prev,
+.next{
+  border:1px solid #333;
+  padding: 4px 8px;
+  margin: 4px;
+  color: #333;
+  transition: all .3s;
+}
+.prev:hover,
+.next:hover{
+  color: #fff;
+  text-decoration: none;
+  background: #333;
+}
+/*返回和关闭*/
+#back,
+#close{
+  position: fixed;
+  bottom: 90px;
+  right: 12%;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  cursor: pointer;
+  z-index: 999;
+}
+#back svg,
+#close svg{
+  fill: currentColor;
+  padding-top: 6px;
+}
+#back a,
+#close{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  color: #333;
+  transition: all .3s;
+}
+#back a:hover,
+#close:hover{
+  line-height: 40px;
+  color: #fff;
+  background: #333;
+}
+#close{
+  bottom: 40px;
+  border: none;
+}
+/*文章最下面的一行*/
+#footer{
+  margin: 20px 0;
+}
+
+/*背景写法*/
+#bg{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(130, 130, 130, 0.2);
+  background-repeat: no-repeat;
+  z-index: -10;
+  transition: all 1s;
+  filter: opacity(10%);
+}
+/*照片*/
+.photo{
+  display: inline-block;
+  text-align: center;
+  margin: 5px;
+  width: 30%;
+}
+/*pre > code*/
+#container .content pre{
+  position: relative;
+}
+#container .content pre:before{
+  content: '🌑 🌑 🌑';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 10px;
+  color: rgba(0,0,0,.4);
+  font-size: 12px;
+}
+#container .content pre code.hljs{
+  display: inline-block;
+  padding-top: 10px;
+}
+.about a{
+  display: inline-block;
+  padding: 4px 20px;
+  margin: 30px 5px;
+  border: 1px solid #333;
+  transition: all .5s;
+}
+.about a:hover{
+  text-decoration: none;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+}
+/*--------------下为响应式---------------*/
+@media screen and (max-width: 1000px) {
+  /*当屏幕尺寸小于600px时，应用下面的CSS样式*/
+  html,body{
+    font-size: 80%;
+  }
+  .wrap{
+    width: 100%;
+  }
+  #header{
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+  .diy{
+    bottom: 20%;
+    font-size: 16px;
+  }
+  .diy #busuanzi_container_site_pv{
+    font-size: 10px;
+    color: #ddd8d8;
+  }
+  #container{
+    margin: 0;
+    padding: 0;
+  }
+  #container ul.postlist li.postlist a{
+    font-size: 20px;
+  }
+  #back, #close{
+    background: none;
+  }
+}
