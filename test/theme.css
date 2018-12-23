@@ -1,0 +1,323 @@
+#bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background-image: linear-gradient(135deg, #A8E6CF 0%, #FFD3B6 100%);
+  /* background-image: url('https://acg.sx/images'); */
+  /* background-image: url('https://i.loli.net/2018/12/22/5c1e0f7795f55.png'); */
+  background-image: url('http://api.wuzuhua.cn/tp/api.php');
+  background-size: cover;
+  opacity: .6;
+}
+
+#bg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://acg.sx/grid.png');
+  opacity: .4;
+}
+
+#Snow {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#user-header {
+  margin: 5rem 0 1.25rem;
+  height: 18.75rem;
+  background-image: url('https://via.placeholder.com/700x300');
+  background-image: url('https://i.loli.net/2018/09/20/5ba39df8950eb.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 768px) {
+  #user-header {
+    margin: 0;
+  }
+
+  .container.w-responsive.mx-auto {
+    padding: 0;
+  }
+}
+
+#user-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+}
+
+#user-header:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.loli.net/2018/12/23/5c1f37317b88a.png');
+  opacity: .1;
+}
+
+#user-post {
+  position: absolute;
+  width: 100%;
+  bottom: 2rem;
+  font-size: 1.4rem;
+  /* color: transparent; */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+  /* background-image: linear-gradient(135deg, #DEFCF9 0%, #C3BEF0 100%); */
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -webkit-animation: fade-in .8s;
+          animation: fade-in .8s;
+  z-index: 2;
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    bottom: -4rem;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 2rem;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    bottom: -4rem;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 2rem;
+    opacity: 1;
+  }
+}
+
+.show-author:before {
+  content: "- "
+}
+
+.show-author {
+  font-size: .8rem;
+  vertical-align: middle;
+}
+
+.bc-total {
+  font-size: 62.5%;
+}
+
+.menu-bar {
+  height: 4rem;
+  padding-left: 1.2rem;
+  -webkit-transition: top .5s;
+  transition: top .5s;
+  vertical-align: middle;
+}
+
+#checkNav {
+  display: inline-block;
+  height: 4rem;
+  font-size: 1.25rem;
+  line-height: 4.4rem;
+}
+
+.menu-bar strong {
+  position: relative;
+  top: -.3rem;
+  left: .5rem;
+  display: inline-block;
+  opacity: .8;
+  height: 4rem;
+  line-height: 100%;
+}
+
+#mainNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100%;
+  padding: 0;
+  -webkit-transform: translateX(-40rem);
+          transform: translateX(-40rem);
+  z-index: 10086;
+}
+
+#mainNav .card-img-top {
+  height: 18.75rem;
+  background: url('https://i.loli.net/2018/09/20/5ba39df8950eb.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#mainNav .card-img-top:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  /* background-image: url('https://acg.sx/grid.png'); */
+  background-image: url('https://i.loli.net/2018/12/23/5c1f37317b88a.png');
+  z-index: 1;
+}
+
+#mainNav .card-img-top .card-body {
+  top: 3rem;
+  width: 100%;
+  z-index: 2;
+}
+
+#mainNav .card-img-top .card-title {
+  margin: .625rem 0;
+  letter-spacing: 1px;
+}
+
+#mainNav .card-img-top .card-title:before,
+#mainNav .card-img-top .card-title:after {
+  content: "-";
+  padding-left: .25rem;
+  color: rgba(255, 255, 255, .4);
+}
+
+#mainNav .card-img-top .card-title:before {
+  padding-right: .25rem;
+  padding-left: 0;
+}
+
+#mainNav .card-img-top img.rounded-circle {
+  width: 80px;
+  height: 80px;
+}
+
+#mainNav .card-img-top p svg {
+  margin: 0 4px;
+}
+
+#mainNav .card-img-top p.card-desc {
+  opacity: .6;
+}
+
+#mainNav ul.list-group a {
+  display: block;
+  font-size: 82.5%;
+}
+
+#mainNav ul.list-group a svg {
+  margin-right: 8px;
+}
+.list-group li{
+  padding: 4px;
+}
+.list-group li i{
+  display: inline-block;
+  padding: 0 4px;
+  padding-left: 1rem;
+  padding-top: 5px;
+}
+.list-group li a{
+  color: rgba(0,0,0,.7);
+  font-family: Monaco;
+}
+.list-group li span{
+  position: relative;
+  top: -5px;
+  left: 4px;
+  margin-left: 1.25rem;
+  display: inline-block;
+  height: 100%;
+}
+.list-group li:hover{
+  background: rgba(0,0,0,.1)
+}
+.list-group li:hover a{
+  color: rgba(0,0,0,1);
+}
+@media only screen and (max-width: 768px) {
+  #checkNav {
+    top: 1.2rem;
+    left: 1.5rem;
+    color: #fff !important;
+  }
+  #mainNav {
+    width: 16rem;
+  }
+}
+
+.nav-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  background-image: url(https://acg.sx/grid.png);
+  z-index: 888;
+  display: none;
+}
+#post-content{
+  background:rgba(255,255,255,.9);
+  margin-bottom: 4rem;
+}
+/* post list start  */
+.post-list{
+  width: auto;
+  padding: .625rem;
+}
+.post-list .avg{
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.created-user{
+  margin: 0;
+}
+.created-user-id{
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.created-user .tags{
+  padding-left: 4px;
+  color: rgba(0,0,0,.3);
+  font-style: oblique;
+}
+.created-date{
+  margin: 0;
+  font-size: 72.5%;
+  color: rgba(0,0,0,.3);
+}
+.post-line{
+  margin: 1px;
+  width: 4rem;
+  height: 1px;
+  background: rgba(0,0,0,.2);
+}
+.post-list-preview{
+  display: block;
+  color: #333;
+  margin-left: .25rem!important;
+  padding-left: .72rem;
+}
+/* post list end */
+#prev i,
+#next i{
+  font-size: 72.5%;
+}
