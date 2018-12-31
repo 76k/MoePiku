@@ -1,13 +1,9 @@
-html,body{
-  font-family: 'Roboto', sans-serif;
-}
 #bg {
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   z-index: -2;
-  background-image: linear-gradient(135deg, #A8E6CF 0%, #FFD3B6 100%);
   background-size: cover;
   opacity: .8;
 }
@@ -235,6 +231,7 @@ html,body{
 
 #mainNav ul.list-group a {
   display: block;
+  text-transform: capitalize;
   font-size: 82.5%;
 }
 
@@ -267,17 +264,6 @@ html,body{
 .list-group li:hover a{
   color: rgba(0,0,0,1);
 }
-@media only screen and (max-width: 768px) {
-  #checkNav {
-    top: 1.2rem;
-    left: 1.5rem;
-    color: #fff !important;
-  }
-  #mainNav {
-    width: 16rem;
-  }
-}
-
 .nav-bg {
   position: fixed;
   top: 0;
@@ -290,7 +276,7 @@ html,body{
   display: none;
 }
 #post-content{
-  background-color:rgba(255,255,255,.9);
+  background-color:rgba(255,255,255,1);
   margin-bottom: 4rem;
 }
 /* post list start  */
@@ -317,7 +303,8 @@ html,body{
   text-overflow:ellipsis;
   white-space:nowrap;
   padding-left: .6rem;
-  color: #7396a7;
+  color: #37677e;
+  font-weight: bold;
   vertical-align: middle;
   opacity: .8;
 }
@@ -352,27 +339,6 @@ html,body{
   vertical-align: middle;
   text-decoration: none;
 }
-#up-back,
-#close{
-  position: fixed;
-  bottom: 8rem;
-  right: 9%;
-  margin: .625rem 0;
-  padding: .5rem .625rem;
-  text-align: center;
-  overflow: hidden;
-  cursor: pointer;
-  background: #fff;
-  z-index: 999;
-  border-radius: 50%;
-}
-#close{
-  bottom: 5rem;
-}
-#back svg{
-  fill: currentColor;
-  padding-top: 6px;
-}
 /* footer start */
 .copyright{
   background: rgba(255,255,255,.8);
@@ -388,8 +354,109 @@ html,body{
 }
 .zooming{
   margin: 1rem;
-  border: 2px solid rgba(47, 110, 145, 0.1);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(214,214,214,.5);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(214,214,214,.5);
-  box-shadow: 10px 10px 5px 0px rgba(214,214,214,.5);
+}
+.window{
+  position: relative;
+  padding: 1.25rem;
+  padding-top: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: .415rem;
+}
+.window:before,
+.window:after,
+.window div:before{
+  content: "";
+  position: absolute;
+  top: .45rem;
+  width: .625rem;
+  height: .625rem;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid;
+  z-index: 233;
+}
+.window:before{
+  left: .725rem;
+  background: #f85955;
+  border-color: #f85955
+}
+.window:after{
+  left: 1.8rem;
+  background: #fbbe3f;
+  border-color: #fbbe3f
+}
+.window div{
+  overflow: auto;
+}
+.window div:before{
+  left: 2.875rem;
+  background: #45cc4b;
+  border-color: #45cc4b
+}
+.window div:after{
+  content: "";
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  background: #e8e8e8;
+  z-index: 2;
+  border-top-left-radius: .415rem;
+  border-top-right-radius: .415rem;
+}
+#up-back{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 270px;
+  height: 280px;
+  background: url('https://catbox.moe/pictures/qts/1448491901093.png') no-repeat right bottom;
+  z-index: 99;
+  cursor: pointer;
+}
+#close{
+  position: fixed;
+  top: 1.25rem;
+  right: .625rem;
+  z-index: 23333;
+  transition: all .3s;
+}
+.friends-list{
+  margin: 1rem;
+  padding: 1.2rem;
+  border-radius: .5rem;
+  border: 1px solid #333;
+  transition: all .5s;
+  cursor: pointer;
+}
+.friends-list a{
+  display: inline-block;
+  margin-right: .5rem;
+}
+.friends-list span{
+  font-weight: 300;
+}
+.friends-list:hover{
+  transform: translateY(-.5rem);
+  -webkit-box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, -3px 7px 17px 4px rgba(13,31,255,0);
+  box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, -3px 7px 17px 4px rgba(13,31,255,0);
+}
+@media only screen and (max-width: 768px) {
+  html,body{
+    font-size: 110%;
+  }
+  #checkNav {
+    top: 1.2rem;
+    left: 1.5rem;
+    color: #fff !important;
+  }
+  #mainNav {
+    width: 16rem;
+  }
+  #up-back {
+    width: 100px;
+    height: 130px;
+    background-size: 100%;
+  }
 }
