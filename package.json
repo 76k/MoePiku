@@ -1,6 +1,6 @@
 {
   "name": "moepiku",
-  "version": "0.1.2",
+  "version": "0.8.9",
   "description": "一个基于github-issues的blog",
   "main": "test.js",
   "scripts": {
