@@ -4,12 +4,20 @@
   "description": "一个基于github-issues的blog",
   "main": "test.js",
   "scripts": {
-    "dev": "browser-sync --server --files '..' src"
+    "dev": "browser-sync --server --files '..' .",
+    "read": "pen test/README.md"
   },
   "keywords": [
     "github-issues",
     "blog"
   ],
   "author": "kozo4",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "aplayer": "^1.10.1",
+    "hexo-helper-live2d": "^3.1.0",
+    "mdbootstrap": "^4.6.0",
+    "normalize.css": "^8.0.1",
+    "social-share.js": "^1.0.16"
+  }
 }
