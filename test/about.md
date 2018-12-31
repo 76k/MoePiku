@@ -58,8 +58,9 @@
 > 写代码是热爱,写到这世界充满爱:)
 
 下方高能: 本人照片(没美颜233)
+
+---
+
 ![](http://ww1.sinaimg.cn/large/0066xOjKgy1fn5ra1vq9ij30ck0chdk4.jpg)
 
 ------------------
-
-<!-- 使用 markdown 编写 -->

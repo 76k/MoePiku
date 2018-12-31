@@ -79,6 +79,7 @@ function index(page) {
 // 语法高亮
 function highlight() {
   $('pre code').each(function(i, block) {
+    $(block).wrap('<div class="window"><div></div></div>')
     hljs.highlightBlock(block);
   });
 }
@@ -167,16 +168,25 @@ function aboutMe() {
       postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
     },
     success: function(data) {
-      postWrap.html(marked(data));
+      postWrap.html('<div class="markdown-body">'+marked(data)+'</div>');
       highlight();
+      new Zooming({}).listen('.markdown-body img')
     }
   })
 }
-function helpNote(){
+$('#commentWrap').on('click',comment)
+function comment(){
   var eNote = new Ractive({
-    template: '#note'
+    el: "#post-content .container-fluid",
+    template: '#comment'
   })
-  postWrap.html(eNote.toHTML())
+  new Valine({
+    el: '#vcomments',
+    appId: '3Q4mMEiNfVlsfDAxQr8Fccuz-gzGzoHsz',
+    appKey: 'wghIh5C1qu1qs823bkdRkmfg',
+    visitor: true,
+    placeholder: '有什么问题可以在这里提(๑•́ ₃ •̀๑)'
+  })
 }
 $('#ph').on('click',ph)
 function ph() {
@@ -189,12 +199,32 @@ function ph() {
     success: function(data) {
       postWrap.html('')
       $(data).each(function(index,item) {
-        postWrap.get(0).innerHTML += '<img class="zooming" src="'+item+'">'
+        postWrap.get(0).innerHTML += '<img class="zooming" src="'+item+'">';
       })
-      new Zooming({}).listen('.zooming')
+      new Zooming().listen('.zooming')
     }
   })
 }
+$('#fd').on('click',friends)
+function friends(){
+  $('.nav-bg').trigger("mousedown");
+  $.ajax({
+    url: 'friends.json',
+    beforeSend: function() {
+      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+    },
+    success: function(data){
+      var f = new Ractive({
+        el: "#post-content .container-fluid",
+        template: "#friends",
+        data: {
+          ls: data
+        }
+      })
+    }
+  })
+}
+friends()
 var helpers = Ractive.defaults.data;
 helpers.markdown2HTML = function(content) {
   return marked(content);
@@ -207,8 +237,9 @@ var routes = {
   'p:page': index,
   'post/:postId': detail,
   'about': aboutMe,
-  'note': helpNote,
-  'ph': ph
+  'comment': comment,
+  'photop': ph,
+  'friends': friends
 };
 var router = Router(routes);
 router.init('/');
@@ -226,7 +257,7 @@ if(_configData['_DIY']['favicon'] == '' || _configData['_DIY']['favicon'] == '')
 }
 if(_configData['_DIY']['headBg']){
   $('#user-header').css({
-    background: 'url('+_configData['_DIY']['headBg']+')'
+    backgroundImage: 'url('+_configData['_DIY']['headBg']+')'
   })
 }
 $('#navTitle').text(_configData['_DIY']['navTitle'])
@@ -258,8 +289,10 @@ $('#up-back').hide();
 $(window).on('scroll', function() {
   if ($(this).scrollTop() > 100) {
     $('#up-back').fadeIn();
+    $('#close').fadeIn()
   } else {
     $('#up-back').fadeOut();
+    $('#close').fadeOut()
   }
   p = $(this).scrollTop();
   if(p === 0){
