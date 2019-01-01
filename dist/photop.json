@@ -1,4 +1,4 @@
-var Photo_img = [
+[
     "https://catbox.moe/pictures/qts/141000167429.png",
     "https://catbox.moe/pictures/qts/1410001686910.png",
     "https://catbox.moe/pictures/qts/1410306398205.png",
@@ -43,6 +43,3 @@ var Photo_img = [
     "https://catbox.moe/pictures/qts/1448856052869.png",
     "https://catbox.moe/pictures/qts/patreon-3.png"
 ]
-// 拿到是一个图床的妹子
-// 你需要自定义可以使用,比如
-Photo_img.push("piku.svg")

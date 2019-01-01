@@ -5,6 +5,8 @@
   "main": "test.js",
   "scripts": {
     "dev": "browser-sync --server --files '..' .",
+    "dist": "rm -rf dist && cp -rf test dist",
+    "gh": "git subtree push --prefix=dist origin gh-pages",
     "read": "pen test/README.md"
   },
   "keywords": [
