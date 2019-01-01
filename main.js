@@ -159,6 +159,12 @@ function detail(id) {
     }
   });
 }
+function maxHeight(){
+  console.log($('.container.w-responsive.mx-auto').height(),$('#bg').height())
+  if($('.container.w-responsive.mx-auto').height() <= $('#bg').height()){
+    $('#copyright').hide()
+  }
+}
 $('#aboutMe').on('click',aboutMe)
 function aboutMe() {
   $('.nav-bg').trigger("mousedown");
@@ -173,19 +179,21 @@ function aboutMe() {
       new Zooming({}).listen('.markdown-body img')
     }
   })
+  maxHeight()
 }
 $('#commentWrap').on('click',comment)
 function comment(){
+  $('.nav-bg').trigger("mousedown");
   var eNote = new Ractive({
     el: "#post-content .container-fluid",
     template: '#comment'
   })
   new Valine({
     el: '#vcomments',
-    appId: '3Q4mMEiNfVlsfDAxQr8Fccuz-gzGzoHsz',
-    appKey: 'wghIh5C1qu1qs823bkdRkmfg',
+    appId: _configData['comment']['APPID'],
+    appKey: _configData['comment']['APPKEY'],
     visitor: true,
-    placeholder: '有什么问题可以在这里提(๑•́ ₃ •̀๑)'
+    placeholder: _configData['comment']['PLACEHOLDER']
   })
 }
 $('#ph').on('click',ph)
@@ -197,7 +205,7 @@ function ph() {
       postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
     },
     success: function(data) {
-      postWrap.html('')
+      postWrap.html(' ')
       $(data).each(function(index,item) {
         postWrap.get(0).innerHTML += '<img class="zooming" src="'+item+'">';
       })
@@ -206,6 +214,9 @@ function ph() {
   })
 }
 $('#fd').on('click',friends)
+$('#linkHome').on('click',function(){
+  $('.nav-bg').trigger("mousedown");
+})
 function friends(){
   $('.nav-bg').trigger("mousedown");
   $.ajax({
@@ -214,6 +225,7 @@ function friends(){
       postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
     },
     success: function(data){
+      $('#post-content .container-fluid').html('')
       var f = new Ractive({
         el: "#post-content .container-fluid",
         template: "#friends",
@@ -224,7 +236,6 @@ function friends(){
     }
   })
 }
-friends()
 var helpers = Ractive.defaults.data;
 helpers.markdown2HTML = function(content) {
   return marked(content);
@@ -329,6 +340,8 @@ function goPAGE() {
     // form Mobie
   } else {
     // form pc
+    $('body').append('<script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>')
+    $('head').append('<link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">')
     var bgConfig = _configData['_DIY']['bg'],
         musicConfig = _configData['_DIY']['mPlayer']
     if(bgConfig == 'random'){
@@ -378,12 +391,15 @@ function goPAGE() {
         })
     }
     if(_configData['_DIY']['Snow']){
-      var sf = new Snowflakes({
-        color: "rgba(255,255,255,1)",
-        count: 80,
-        minOpacity: 0.1,
-        maxOpacity: 0.8
-      });
+      $('body').append('<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>')
+      setTimeout(function(){
+        new Snowflakes({
+          color: "rgba(255,255,255,1)",
+          count: 80,
+          minOpacity: 0.1,
+          maxOpacity: 0.8
+        })
+      },5000)
     }
   }
 }goPAGE();

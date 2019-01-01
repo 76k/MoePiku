@@ -3,6 +3,11 @@ var _configData = {
   github_user: "lifesinger",
   github_repo: "blog",
   pre_page: '10',
+  comment: {
+    APPID: "3Q4mMEiNfVlsfDAxQr8Fccuz-gzGzoHsz",
+    APPKEY: "wghIh5C1qu1qs823bkdRkmfg",
+    PLACEHOLDER: "有什么问题可以在这里提(๑•́ ₃ •̀๑)"
+  },
   _DIY: {
     favicon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvAAAAP1BMVEUAAAAAAAAhUoT3pZT///8YGIxjpbW1ta0hIYQhQufGxs4xQv+U9/fGACGlxtZKABjW///nlIT355QhY0JSxlLLv7sFAAAAAXRSTlMAQObYZgAAAVJJREFUeF6t1AtqA1EIQNGo85982+5/rX0XIzK8QCDmQlvKeGRAkhNJ1+lNnzLQ36HfVlB5UZUx6EBexLNcWWMJAVPr/Gx6Bg30HQYCRKqBnTMRqMboiHxBB+ssUVcPQVX2HhGMI9XZ+TwM71nACvOLAYnHPeiOUGCgTNVXTJMvSvgdxp58ZJYvBTkwAhVZUFUzVQfxN7GTGmM4P/5mPayzTFUEqDrPIj8toDwD5gGiz5nI9SribFlgQDMQiyCOWTa06kxbw7CuIG9ZGFF1QrD7vc78DIwmW1egf9FCgMzWGNCZWSJWsCQZUOTeqjARvNIBxuFBwTgBqML8AP5jhxgO5KtBVQYEj+O2XS6cedvGkd8i+XKgKgM6Yuh2u7T2fRz5n9MCczVXqzByZsZr7juIRDhILM1Tl1nr8Qj0GkJAdQYEBeshR0pUZ/PMsY+MJKuyf4zEStnV0TenAAAAAElFTkSuQmCC",
     bg: "https://chiru.no/u/bg.png",
