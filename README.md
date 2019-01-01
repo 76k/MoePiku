@@ -1,5 +1,5 @@
 <p align="center">
-<img src='piku.svg' height="300px">
+<img src='dist/piku.svg' height="300px">
 </p>
 <h1 align="center"><a href="http://blog.kozo4.ooo">Piku</a></h1>
 <p align="center">
