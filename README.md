@@ -219,13 +219,3 @@ var _DIY = {
 
 
 ---
-
-<p align="center">
-**Fork自: [wuhaoworld](https://github.com/wuhaoworld/github-issues-blog)** &nbsp;
-
-Github: [iKozo4](http://github.com/ikozo4)&nbsp;&nbsp;
-
-&nbsp;&nbsp;Bilibili: [Kozo4](https://space.bilibili.com/27013266/#/)
-
-&nbsp;&nbsp;Netease: [Kozo4](http://music.163.com/#/user/home?id=266341607)
-</p>
