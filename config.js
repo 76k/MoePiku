@@ -1,7 +1,7 @@
 var _configData = {
   blog_title: "Kozo4のblog",
-  github_user: "lifesinger",
-  github_repo: "blog",
+  github_user: "d1y",
+  github_repo: "MoePiku",
   pre_page: '10',
   comment: {
     APPID: "3Q4mMEiNfVlsfDAxQr8Fccuz-gzGzoHsz",
