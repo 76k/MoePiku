@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "browser-sync --server --files '..' .",
     "dist": "rm -rf dist && cp -rf test dist",
-    "gh": "git subtree push --prefix=dist origin gh-pages",
+    "gh": "git subtree push --prefix=dist origin gh-pages && git checkout gh-pages",
     "read": "pen test/README.md"
   },
   "keywords": [
