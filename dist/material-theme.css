@@ -1,3 +1,15 @@
+@font-face {
+  font-family: Monaco;
+  src: url('https://cdn.jsdelivr.net/gh/todylu/monaco.ttf/monaco.ttf')
+}
+html,body,
+.markdown-body,
+.markdown-body pre{
+  font-family: Monaco,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"!important;
+}
+.markdown-body pre{
+  background: transparent;
+}
 #bg {
   width: 100%;
   height: 100%;
@@ -84,6 +96,7 @@
   /* -webkit-text-fill-color: transparent; */
   /* background-image: linear-gradient(135deg, #DEFCF9 0%, #C3BEF0 100%); */
   -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s;
   -webkit-animation: fade-in .8s;
           animation: fade-in .8s;
@@ -133,6 +146,7 @@
   padding-left: 1.2rem;
   background: transparent;
   -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s;
   vertical-align: middle;
 }
@@ -149,6 +163,8 @@
   height: 4rem;
   font-size: 1.25rem;
   line-height: 4.4rem;
+  -webkit-transition: all .4s;
+  -o-transition: all .4s;
   transition: all .4s;
 }
 #checkNav i.icons{
@@ -158,7 +174,11 @@
 .menu-bar strong {
   position: relative;
   top: -.3rem;
+<<<<<<< HEAD
   left: .8rem;
+=======
+  left: .4rem;
+>>>>>>> developer
   display: inline-block;
   opacity: .8;
   height: 4rem;
@@ -173,12 +193,14 @@
   height: 100%;
   padding: 0;
   -webkit-transform: translateX(-40rem);
-          transform: translateX(-40rem);
+          -ms-transform: translateX(-40rem);
+      transform: translateX(-40rem);
   z-index: 10086;
 }
 #mainNav.active{
   -webkit-transform: translateX(0);
-          transform: translateX(0);
+          -ms-transform: translateX(0);
+      transform: translateX(0);
 }
 #mainNav .card-img-top {
   height: 18.75rem;
@@ -289,6 +311,8 @@
 .post-list{
   padding: .625rem;
   list-style: none;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s;
 }
 .post-list-title{
@@ -305,7 +329,8 @@
 .post-list-title a{
   display: inline-block;
   overflow: hidden;
-  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis;
+     text-overflow:ellipsis;
   white-space:nowrap;
   padding-left: .6rem;
   color: #37677e;
@@ -428,6 +453,8 @@
   top: 1.25rem;
   right: .625rem;
   z-index: 23333;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
   transition: all .3s;
 }
 .friends-list{
@@ -435,6 +462,8 @@
   padding: 1.2rem;
   border-radius: .5rem;
   border: 1px solid #333;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
   transition: all .5s;
   cursor: pointer;
 }
@@ -446,7 +475,9 @@
   font-weight: 300;
 }
 .friends-list:hover{
-  transform: translateY(-.5rem);
+  -webkit-transform: translateY(-.5rem);
+      -ms-transform: translateY(-.5rem);
+          transform: translateY(-.5rem);
   -webkit-box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, -3px 7px 17px 4px rgba(13,31,255,0);
   box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, -3px 7px 17px 4px rgba(13,31,255,0);
 }
@@ -464,7 +495,12 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
   font-feature-settings: 'liga';
+=======
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+>>>>>>> developer
 }
 @media only screen and (max-width: 768px) {
   html,body{
