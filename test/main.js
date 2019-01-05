@@ -314,7 +314,7 @@ $(window).on('touchend',function (e) {
     $('#checkNav').trigger('click')
   }
 })
-function active(ele) {
+window.active = function(ele) {
   var n = ele.parent().next()
   n.html(marked(n.html())).toggle("fast")
 }
