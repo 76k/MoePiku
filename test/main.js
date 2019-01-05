@@ -25,7 +25,7 @@ function index(page) {
       filter: 'created',
       page: page,
       // access_token: _configData['access_token'],
-      access_token: '82ccf5992722b323fa3571d12bfb8a576907a480',
+      //access_token: '82ccf5992722b323fa3571d12bfb8a576907a480',
       per_page: _configData['pre_page']
     },
     beforeSend: function() {
@@ -133,7 +133,7 @@ function detail(id) {
     url: "https://api.github.com/repos/" + _configData['github_user'] + "/" + _configData['github_repo'] + "/issues/" + id,
     data: {
       // access_token: _config['access_token']
-      access_token: '82ccf5992722b323fa3571d12bfb8a576907a480'
+      // access_token: '82ccf5992722b323fa3571d12bfb8a576907a480'
     },
     beforeSend: function() {
       loading()
@@ -187,8 +187,8 @@ function ph() {
   $.ajax({
     url: "photop.json",
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
-    },
+      loading()
+		},
     success: function(data) {
       postWrap.html('')
       $(data).each(function(index,item) {
@@ -207,7 +207,7 @@ function friends(){
   $.ajax({
     url: 'friends.json',
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+      loading()
     },
     success: function(data){
       var f = new Ractive({
