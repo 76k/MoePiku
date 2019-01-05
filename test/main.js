@@ -2,42 +2,36 @@
 // Github: https://github.com/d1y/MoePiku
 // create by 2018 last commit for 2018//11/25
 // ----cat me----> http://kozo4.ooo
-
+(function(){
 Ractive.DEBUG = false;
-var postWrap = $('#post-content .container-fluid')
+var postWrap = $('#post-content .container-fluid'),
+    loading = function(){
+      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+    }
 function index(page) {
-  // 传的参数转为整数,并不可能为0
   page = parseInt(page) || 1;
-  // 传到全局对象上去
   window._G = window._G || {
     post: {},
     postList: {}
   };
-  // 页面标题
   $('title').html(_configData['blog_title']);
-  // 如果获取到了就生成内容,然后返回
   if (_G.postList[page] != undefined) {
     postWrap.html(_G.postList[page]);
     return;
   }
-  // ajax请求
   $.ajax({
     url: "https://api.github.com/repos/" + _configData['github_user'] + "/" + _configData['github_repo'] + "/issues",
-    // 请求的url里加一些参数
     data: {
       filter: 'created',
       page: page,
-      // github限制了访问的次数,这里是为了增加访问次数
-      access_token: _configData['access_token'],
-      // 每次获取到的列表个数
+      // access_token: _configData['access_token'],
+      //access_token: '82ccf5992722b323fa3571d12bfb8a576907a480',
       per_page: _configData['pre_page']
     },
     beforeSend: function() {
-      // 在数据未加载好之前的一个动画效果
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+      loading()
     },
     success: function(data, textStatus, jqXHR) {
-      // 返回的结果,其中data是数据
       var link = jqXHR.getResponseHeader("Link") || "";
       var next = false;
       var prev = false;
@@ -47,7 +41,6 @@ function index(page) {
       if (link.indexOf('rel="prev"') > 0) {
         prev = true;
       }
-      // 在这里新建一个模板文件
       var ractive = new Ractive({
         template: '#listTpl',
         data: {
@@ -59,7 +52,6 @@ function index(page) {
       });
       window._G.postList[page] = ractive.toHTML();
       postWrap.html(window._G.postList[page]);
-      //将文章列表的信息存到全局变量中，避免重复请求
       for (i in data) {
         var ractive = new Ractive({
           template: '#detailTpl',
@@ -69,7 +61,6 @@ function index(page) {
         });
         window._G.post[data[i].number] = {};
         window._G.post[data[i].number].body = ractive.toHTML();
-        // 文章标题 = github标题 + 标题
         var title = data[i].title + " | " + _configData['blog_title'];
         window._G.post[data[i].number].title = title;
       }
@@ -142,9 +133,10 @@ function detail(id) {
     url: "https://api.github.com/repos/" + _configData['github_user'] + "/" + _configData['github_repo'] + "/issues/" + id,
     data: {
       // access_token: _config['access_token']
+      // access_token: '82ccf5992722b323fa3571d12bfb8a576907a480'
     },
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+      loading()
     },
     success: function(data) {
       var ractive = new Ractive({
@@ -159,19 +151,13 @@ function detail(id) {
     }
   });
 }
-function maxHeight(){
-  console.log($('.container.w-responsive.mx-auto').height(),$('#bg').height())
-  if($('.container.w-responsive.mx-auto').height() <= $('#bg').height()){
-    $('#copyright').hide()
-  }
-}
 $('#aboutMe').on('click',aboutMe)
 function aboutMe() {
   $('.nav-bg').trigger("mousedown");
   $.ajax({
     url: "about.md",
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+      loading()
     },
     success: function(data) {
       postWrap.html('<div class="markdown-body">'+marked(data)+'</div>');
@@ -179,7 +165,6 @@ function aboutMe() {
       new Zooming({}).listen('.markdown-body img')
     }
   })
-  maxHeight()
 }
 $('#commentWrap').on('click',comment)
 function comment(){
@@ -190,10 +175,10 @@ function comment(){
   })
   new Valine({
     el: '#vcomments',
-    appId: _configData['comment']['APPID'],
-    appKey: _configData['comment']['APPKEY'],
+    appId: '3Q4mMEiNfVlsfDAxQr8Fccuz-gzGzoHsz',
+    appKey: 'wghIh5C1qu1qs823bkdRkmfg',
     visitor: true,
-    placeholder: _configData['comment']['PLACEHOLDER']
+    placeholder: '有什么问题可以在这里提(๑•́ ₃ •̀๑)'
   })
 }
 $('#ph').on('click',ph)
@@ -202,10 +187,10 @@ function ph() {
   $.ajax({
     url: "photop.json",
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
-    },
+      loading()
+		},
     success: function(data) {
-      postWrap.html(' ')
+      postWrap.html('')
       $(data).each(function(index,item) {
         postWrap.get(0).innerHTML += '<img class="zooming" src="'+item+'">';
       })
@@ -213,19 +198,18 @@ function ph() {
     }
   })
 }
-$('#fd').on('click',friends)
-$('#linkHome').on('click',function(){
-  $('.nav-bg').trigger("mousedown");
+$('#linkHome').on('click',function () {
+  $('.nav-bg').trigger("mousedown")
 })
+$('#fd').on('click',friends)
 function friends(){
   $('.nav-bg').trigger("mousedown");
   $.ajax({
     url: 'friends.json',
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+      loading()
     },
     success: function(data){
-      $('#post-content .container-fluid').html('')
       var f = new Ractive({
         el: "#post-content .container-fluid",
         template: "#friends",
@@ -288,7 +272,6 @@ $('#checkNav').on('click', function(event) {
     $("#mainNav").addClass('active')
     $('.nav-bg').show()
     $('.nav-bg').on("mousedown", function(e) {
-      // console.log(e);
       $("#mainNav").removeClass('active')
       $(this).hide()
     });
@@ -331,7 +314,7 @@ $(window).on('touchend',function (e) {
     $('#checkNav').trigger('click')
   }
 })
-function active(ele) {
+window.active = function(ele) {
   var n = ele.parent().next()
   n.html(marked(n.html())).toggle("fast")
 }
@@ -340,8 +323,6 @@ function goPAGE() {
     // form Mobie
   } else {
     // form pc
-    $('body').append('<script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>')
-    $('head').append('<link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">')
     var bgConfig = _configData['_DIY']['bg'],
         musicConfig = _configData['_DIY']['mPlayer']
     if(bgConfig == 'random'){
@@ -354,6 +335,11 @@ function goPAGE() {
         "background-image": 'url('+bgConfig+')'
       })
     }
+    if(musicConfig){
+      $('head').append('<link rel="stylesheet" href="https://unpkg.com/aplayer/dist/APlayer.min.css">')
+      $('body').append('<script src="https://unpkg.com/aplayer"></script>')
+    }
+    setTimeout(function(){
     if(musicConfig.constructor === Object){
       new APlayer({
         container: document.getElementById('aplayer'),
@@ -391,16 +377,14 @@ function goPAGE() {
         })
     }
     if(_configData['_DIY']['Snow']){
-      $('body').append('<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>')
-      setTimeout(function(){
-        new Snowflakes({
-          color: "rgba(255,255,255,1)",
-          count: 80,
-          minOpacity: 0.1,
-          maxOpacity: 0.8
-        })
-      },5000)
+      var sf = new Snowflakes({
+        color: "rgba(255,255,255,1)",
+        count: 80,
+        minOpacity: 0.1,
+        maxOpacity: 0.8
+      });
     }
+    },8000)
   }
 }goPAGE();
 function fetch163Playlist(playlist_id) {
@@ -477,3 +461,4 @@ var Piku = {
 }
 console.log("%cHI! I'm " + Piku['Author'], "border: 2px solid #333;background: #333;color:#fff;padding: 10px;margin: 5px;border-radius: 5px;");
 console.log('%c MoePiku in ' + Piku["Version"], 'background: #333;padding: 8px;color: #fff;margin: 10px 0;border-radius: 4px;border: 2px solid yellow;');
+})()

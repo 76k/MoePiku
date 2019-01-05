@@ -174,11 +174,7 @@ html,body,
 .menu-bar strong {
   position: relative;
   top: -.3rem;
-<<<<<<< HEAD
-  left: .8rem;
-=======
   left: .4rem;
->>>>>>> developer
   display: inline-block;
   opacity: .8;
   height: 4rem;
@@ -495,12 +491,8 @@ html,body,
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-<<<<<<< HEAD
-  font-feature-settings: 'liga';
-=======
   -webkit-font-feature-settings: 'liga';
           font-feature-settings: 'liga';
->>>>>>> developer
 }
 @media only screen and (max-width: 768px) {
   html,body{

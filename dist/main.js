@@ -25,7 +25,7 @@ function index(page) {
       filter: 'created',
       page: page,
       // access_token: _configData['access_token'],
-      access_token: '82ccf5992722b323fa3571d12bfb8a576907a480',
+      //access_token: '82ccf5992722b323fa3571d12bfb8a576907a480',
       per_page: _configData['pre_page']
     },
     beforeSend: function() {
@@ -133,7 +133,7 @@ function detail(id) {
     url: "https://api.github.com/repos/" + _configData['github_user'] + "/" + _configData['github_repo'] + "/issues/" + id,
     data: {
       // access_token: _config['access_token']
-      access_token: '82ccf5992722b323fa3571d12bfb8a576907a480'
+      // access_token: '82ccf5992722b323fa3571d12bfb8a576907a480'
     },
     beforeSend: function() {
       loading()
@@ -151,12 +151,6 @@ function detail(id) {
     }
   });
 }
-function maxHeight(){
-  console.log($('.container.w-responsive.mx-auto').height(),$('#bg').height())
-  if($('.container.w-responsive.mx-auto').height() <= $('#bg').height()){
-    $('#copyright').hide()
-  }
-}
 $('#aboutMe').on('click',aboutMe)
 function aboutMe() {
   $('.nav-bg').trigger("mousedown");
@@ -171,7 +165,6 @@ function aboutMe() {
       new Zooming({}).listen('.markdown-body img')
     }
   })
-  maxHeight()
 }
 $('#commentWrap').on('click',comment)
 function comment(){
@@ -182,10 +175,10 @@ function comment(){
   })
   new Valine({
     el: '#vcomments',
-    appId: _configData['comment']['APPID'],
-    appKey: _configData['comment']['APPKEY'],
+    appId: '3Q4mMEiNfVlsfDAxQr8Fccuz-gzGzoHsz',
+    appKey: 'wghIh5C1qu1qs823bkdRkmfg',
     visitor: true,
-    placeholder: _configData['comment']['PLACEHOLDER']
+    placeholder: '有什么问题可以在这里提(๑•́ ₃ •̀๑)'
   })
 }
 $('#ph').on('click',ph)
@@ -194,10 +187,10 @@ function ph() {
   $.ajax({
     url: "photop.json",
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
-    },
+      loading()
+		},
     success: function(data) {
-      postWrap.html(' ')
+      postWrap.html('')
       $(data).each(function(index,item) {
         postWrap.get(0).innerHTML += '<img class="zooming" src="'+item+'">';
       })
@@ -209,18 +202,14 @@ $('#linkHome').on('click',function () {
   $('.nav-bg').trigger("mousedown")
 })
 $('#fd').on('click',friends)
-$('#linkHome').on('click',function(){
-  $('.nav-bg').trigger("mousedown");
-})
 function friends(){
   $('.nav-bg').trigger("mousedown");
   $.ajax({
     url: 'friends.json',
     beforeSend: function() {
-      postWrap.html('<div class="text-center pb-4 pt-4 mb-4 mt-4"><img class="mx-auto" src="https://i.loli.net/2018/09/20/5ba3a331a8f3e.gif"></div>');
+      loading()
     },
     success: function(data){
-      $('#post-content .container-fluid').html('')
       var f = new Ractive({
         el: "#post-content .container-fluid",
         template: "#friends",
@@ -325,7 +314,7 @@ $(window).on('touchend',function (e) {
     $('#checkNav').trigger('click')
   }
 })
-function active(ele) {
+window.active = function(ele) {
   var n = ele.parent().next()
   n.html(marked(n.html())).toggle("fast")
 }
@@ -334,8 +323,6 @@ function goPAGE() {
     // form Mobie
   } else {
     // form pc
-    $('body').append('<script src="https://unpkg.com/aplayer/dist/APlayer.min.js"></script>')
-    $('head').append('<link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">')
     var bgConfig = _configData['_DIY']['bg'],
         musicConfig = _configData['_DIY']['mPlayer']
     if(bgConfig == 'random'){
@@ -390,15 +377,12 @@ function goPAGE() {
         })
     }
     if(_configData['_DIY']['Snow']){
-      $('body').append('<script src="https://unpkg.com/magic-snowflakes/dist/snowflakes.min.js"></script>')
-      setTimeout(function(){
-        new Snowflakes({
-          color: "rgba(255,255,255,1)",
-          count: 80,
-          minOpacity: 0.1,
-          maxOpacity: 0.8
-        })
-      },5000)
+      var sf = new Snowflakes({
+        color: "rgba(255,255,255,1)",
+        count: 80,
+        minOpacity: 0.1,
+        maxOpacity: 0.8
+      });
     }
     },8000)
   }
